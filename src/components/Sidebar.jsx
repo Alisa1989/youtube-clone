@@ -1,8 +1,16 @@
+import { useContext } from "react";
+
 import { Stack } from "@mui/material";
 
 import { categories } from "../utils/constants";
+import { ThemeContext } from '../ThemeContext';
 
-const Sidebar = ({selectedCategory, setSelectedCategory}) => (
+
+const Sidebar = ({selectedCategory, setSelectedCategory}) => {
+
+  const { darkMode } = useContext(ThemeContext)
+  
+  return(
   <Stack
     direction="row"
     sx={{
@@ -17,7 +25,7 @@ const Sidebar = ({selectedCategory, setSelectedCategory}) => (
         onClick={() => setSelectedCategory(category.name)}
         style={{
           background: category.name === selectedCategory && "#FC1503",
-          color: "white",
+          color: darkMode === true? "#fff" : "#000",
         }}
         key={category.name}
       >
@@ -37,6 +45,6 @@ const Sidebar = ({selectedCategory, setSelectedCategory}) => (
       </button>
     ))}
   </Stack>
-);
+)};
 
 export default Sidebar;
