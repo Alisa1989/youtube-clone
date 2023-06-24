@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { Box } from '@mui/material';
 
 import { Videos, ChannelCard } from './';
 import { fetchFromAPI } from '../utils/fetchFromAPI';
 
 const ChannelDetail = () => {
+
   const [channelDetail, setChannelDetail] = useState(null);
   const [videos, setVideos] = useState([])
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -23,9 +24,9 @@ const ChannelDetail = () => {
     <Box minHeight="95vh">
       <Box>
         <div style={{
-          background: 'background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,147,208,1) 51%, rgba(0,212,255,1) 100%)',
+          background: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(39,147,208,1) 51%, rgba(0,212,255,1) 100%)',
           zIndex: 10,
-          height: '30px'
+          height: '300px'
         }} 
         />
           <ChannelCard channelDetail={channelDetail}

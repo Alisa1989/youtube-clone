@@ -1,12 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+
 import { Box, Stack, Typography } from "@mui/material";
 
-import { Sidebar, Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
+import { Sidebar, Videos } from "./";
+import { ThemeContext } from '../ThemeContext';
+
 
 const Feed = () => {
+
   const [selectedCategory, setSelectedCategory] = useState("New");
   const [videos, setVideos] = useState([]);
+  const { darkMode } = useContext(ThemeContext)
 
   useEffect(() => {
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
@@ -31,7 +36,7 @@ const Feed = () => {
         <Typography
           className="copyright"
           variant="body2"
-          sx={{ mt: 1.5, color: "#fff" }}
+          sx={{ mt: 1.5, color: darkMode === true? "#fff" : "#000" }}
         >
           Copyright 2023 YouTube Media
         </Typography>
@@ -41,7 +46,7 @@ const Feed = () => {
           variant="h4"
           fontWeight="bold"
           mb={2}
-          sx={{ color: "white" }}
+          sx={{ color: darkMode === true? "#fff" : "#000" }}
         >
           {selectedCategory} <span style={{ color: "#F31503" }}>videos</span>
         </Typography>

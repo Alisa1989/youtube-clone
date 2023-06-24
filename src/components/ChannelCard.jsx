@@ -1,12 +1,17 @@
-import React from "react";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import { Box, CardContent, CardMedia, Typography } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
-import { Link } from "react-router-dom";
 
 import { demoProfilePicture } from "../utils/constants";
+import { ThemeContext } from '../ThemeContext';
+
 
 const ChannelCard = ({ channelDetail, marginTop }) => {
+
+  const { darkMode } = useContext(ThemeContext)
+
   return (
     <Box
       sx={{
@@ -28,7 +33,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
             flexDirection: "column",
             justifyContent: "center",
             textAlign: "center",
-            color: "#fff",
+            color: darkMode === true ? "#fff" : "#000",
           }}
         >
           <CardMedia
