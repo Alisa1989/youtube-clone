@@ -30,7 +30,7 @@ const Navbar = () => {
       </Link>
       <ThemeSwitch/>
 
-      <SearchBar></SearchBar>
+      <SearchBar/>
     </Stack>
   );
 };
